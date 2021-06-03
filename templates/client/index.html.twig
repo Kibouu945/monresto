@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client {{ app.user.prenoms}} - Mon Resto !{% endblock %}
+
+{% block content %}
+ <h1>Mon compte Client</h1>
+  Bienvenue {{ app.user.prenoms }}
+  <hr>
+ -<a href="{{ path('modifier') }}">Modifier mon mot de passe</a><br/>
+
+  <hr>
+{% endblock %}

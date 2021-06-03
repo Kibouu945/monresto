@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant {{ app.user.prenoms}} - Mon Resto !{% endblock %}
+
+{% block content %}
+    <h1>Mon compte Restaurant</h1>
+    Bienvenue {{ app.user.prenoms }}
+    <hr>
+    -<a href="{{ path('modifier') }}">Modifier mon mot de passe</a><br/>
+    <hr>
+{% endblock %}
