@@ -3,9 +3,54 @@
 {% block title %}Restaurant {{ app.user.prenoms}} - Mon Resto !{% endblock %}
 
 {% block content %}
-    <h1>Mon compte Restaurant</h1>
-    Bienvenue {{ app.user.prenoms }}
-    <hr>
-    -<a href="{{ path('modifier') }}">Modifier mon mot de passe</a><br/>
-    <hr>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<link href="{{ asset("assets/css/dashboard.css")}}" rel="stylesheet">
+	<link href="{{ asset("assets/css/bootstrap.min.css")}}"rel="stylesheet">
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar">
+			<div class="sidebar-content js-simplebar">
+				<ul class="sidebar-nav">
+					<li class="sidebar-header">
+						Espace Restaurant
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="{{ path("plat_new") }}">
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle"> Tableau de bord </span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="{{ path("plat_index") }}">
+							<i class="align-middle" data-feather="settings"></i> <span class="align-middle"> Liste des plats  </span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="">
+							<i class="align-middle" data-feather="book"></i> <span class="align-middle"> Commande en attente </span>
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</nav>
+
+		<div class="main">
+
+		</div>
+	</div>
+
+	<script src="js/vendor.js"></script>
+	<script src="js/app.js"></script>
+
+
+</body>
+
+</html>
 {% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -45,9 +47,21 @@ class User implements UserInterface
     private $prenoms;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer")
      */
     private $type;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Plat::class, mappedBy="restaurant", orphanRemoval=true)
+     */
+    private $plats;
+
+    public function __construct()
+    {
+        $this->plats = new ArrayCollection();
+    }
+
+
 
     public function getId(): ?int
     {
@@ -154,15 +168,51 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getType(): ?bool
+    public function getType(): ?int
     {
         return $this->type;
     }
 
-    public function setType(bool $type): self
+    public function setType(int $type): self
     {
         $this->type = $type;
 
         return $this;
     }
+
+    /**
+     * @return Collection|Plat[]
+     */
+    public function getPlats(): Collection
+    {
+        return $this->plats;
+    }
+
+    public function addPlat(Plat $plat): self
+    {
+        if (!$this->plats->contains($plat)) {
+            $this->plats[] = $plat;
+            $plat->setRestaurant($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlat(Plat $plat): self
+    {
+        if ($this->plats->removeElement($plat)) {
+            // set the owning side to null (unless already changed)
+            if ($plat->getRestaurant() === $this)
+            {
+                $plat->setRestaurant(null);
+            }
+        }
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return (string)$this->prenoms   ;
+    }
+
 }

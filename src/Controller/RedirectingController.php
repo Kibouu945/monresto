@@ -22,7 +22,7 @@ class RedirectingController extends AbstractController
         {
             return $this->redirectToRoute('client');
         }
-        elseif (in_array('ROLE_RESTAURANT', $user->getRoles()))
+        elseif ( in_array('ROLE_RESTAURANT', $user->getRoles()))
         {
             return $this->redirectToRoute('restaurant');
         }

@@ -13,8 +13,6 @@ class RestaurantController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('restaurant/index.html.twig', [
-            'controller_name' => 'RestaurantController',
-        ]);
+        return $this->render('restaurant/index.html.twig');
     }
 }

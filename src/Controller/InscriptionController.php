@@ -37,11 +37,12 @@ class InscriptionController extends AbstractController
         {
             $user ->setPassword($this -> encoder -> encodePassword($user , $user->getPassword()));
 
-            if ($user ->getType() )
+            if ($user ->getType() == 0)
             {
                 $user->setRoles(["ROLE_CLIENT"]);
             }
-            elseif ($user->getType() )
+
+            elseif ($user ->getType() == 1)
             {
                 $user->setRoles(["ROLE_RESTAURANT"]);
             }
